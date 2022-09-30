@@ -1,18 +1,44 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
+"""
 def order(values: list = None) -> list:
     if values is None:
         # TODO: demander les valeurs ici
+        print('Veuillez entrer 10 valeurs svp. ')
+        liste1 = []
+        for i in range(10):
+            liste1.append(input())
+        liste1.sort()
+        print(liste1)
         pass
 
-    return []
+    return [liste1]
+"""
 
 
 def anagrams(words: list = None) -> bool:
     if words is None:
         # TODO: demander les mots ici
+        print('Veuillez ecrire 2 mots.')
+        mot1 = input('Veuillez ecrire la premiere ici')
+        mot2 = input('Veuillez ecrire la deuxieme ici')
+        c = 0
+        d = 0
+        for i in range(len(mot1)):
+            if mot1[i] in mot2:
+                c += 1
+            else:
+                return False
+        for a in range(len(mot2)):
+            if mot2[a] in mot1:
+                d += 1
+            else:
+                return False
+
+        if d == len(mot1) - 1 and c == len(mot2) - 1:
+            return True
+
         pass
 
     return False
@@ -45,12 +71,17 @@ def print_recipe(ingredients) -> None:
 
 
 def main() -> None:
+    """""
     print(f"On essaie d'ordonner les valeurs...")
     order()
-
+    """""
     print(f"On vérifie les anagrammes...")
-    anagrams()
+    if anagrams():
+        print('oui')
+    else:
+        print("non")
 
+"""
     my_list = [3, 3, 5, 6, 1, 1]
     print(f"Ma liste contient-elle des doublons? {contains_doubles(my_list)}")
 
@@ -65,7 +96,7 @@ def main() -> None:
     recipes = get_recipes()
 
     print("On affiche une recette au choix...")
-    print_recipe(recipes)
+    print_recipe(recipes)"""
 
 
 if __name__ == '__main__':
