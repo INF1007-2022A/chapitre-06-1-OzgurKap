@@ -22,18 +22,20 @@ def anagrams(words: list = None) -> bool:
         while len(words) < 2:
             words.append(input("Please enter string\n"))
 
-    return sorted(words[0]) == sorted(words[1])
+    return sorted(words[0]) == sorted(words[1]) # ici le sort va trier les mots, si les mots triées sont egales,
+    # alors on a les memes caractere dans chacun des mots.
 
 
 def contains_doubles(items: list) -> bool:
 
-    return len(set(items)) != len(items)
+    return len(set(items)) != len(items) # si on fait un set sur un liste, le set va enlerver les doublons.
 
 
 def best_grades(student_grades: dict) -> dict:
     # TODO: Retourner un dictionnaire contenant le nom de l'étudiant ayant la meilleure moyenne ainsi que sa moyenne
     best_student = dict()
-    for key, value in student_grades.items():
+    for key, value in student_grades.items():  # je aprcours le cle (key ) et valeur. Le .items va nous donner le key
+        # et le value dans une dictionnaire.
         average = sum(value)/len(value)
 
         if len(best_student) == 0 or list(best_student.values())[0] < average:
@@ -63,6 +65,7 @@ def get_recipes():
     # TODO: Demander le nom d'une recette, puis ses ingrédients et enregistrer dans une structure de données
     name = input("Quel est le nom de votre recette?\n")
     ingredient = input("Entrer la liste d'ingrédients? Séparer les ingrédiants par une ,\n").split(",")
+    # split retourne une liste
 
     return {name: ingredient}
 
