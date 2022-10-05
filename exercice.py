@@ -25,19 +25,19 @@ def anagrams(words: list = None) -> bool:
         mot2 = input('Veuillez ecrire la deuxieme ici')
         c = 0
         d = 0
-        for i in range(len(mot1)):
-            if mot1[i] in mot2:
-                c += 1
-            else:
-                return False
-        for a in range(len(mot2)):
-            if mot2[a] in mot1:
-                d += 1
-            else:
-                return False
-
-        if d == len(mot1) - 1 and c == len(mot2) - 1:
-            return True
+        if len(mot1) == len(mot2):
+            for i in range(len(mot1)):
+                if mot1[i] in mot2:
+                    c += 1
+                else:
+                    return False
+            for a in range(len(mot2)):
+                if mot2[a] in mot1:
+                    d += 1
+                else:
+                    return False
+            if c == d and c == len(mot2) and d == len(mot1):
+                return True
 
         pass
 
@@ -45,6 +45,7 @@ def anagrams(words: list = None) -> bool:
 
 
 def contains_doubles(items: list) -> bool:
+
     return False
 
 
@@ -74,17 +75,17 @@ def main() -> None:
     """""
     print(f"On essaie d'ordonner les valeurs...")
     order()
-    """""
+   
     print(f"On vérifie les anagrammes...")
     if anagrams():
         print('oui')
     else:
         print("non")
+ """""
 
-"""
     my_list = [3, 3, 5, 6, 1, 1]
     print(f"Ma liste contient-elle des doublons? {contains_doubles(my_list)}")
-
+    """
     grades = {"Bob": [90, 65, 20], "Alice": [85, 75, 83]}
     best_student = best_grades(grades)
     print(f"{list(best_student.keys())[0]} a la meilleure moyenne: {list(best_student.values())[0]}")
