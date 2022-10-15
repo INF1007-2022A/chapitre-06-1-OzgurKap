@@ -83,7 +83,7 @@ def print_recipe(ingredients) -> None:
 
 
 def main() -> None:
-    print(f"On essaie d'ordonner les valeurs...")
+    """print(f"On essaie d'ordonner les valeurs...")
     print(order())
 
     print(f"On vérifie les anagrammes...")
@@ -94,16 +94,16 @@ def main() -> None:
 
     grades = {"Bob": [90, 65, 20], "Alice": [85, 75, 83]}
     best_student = best_grades(grades)
-    print(f"{list(best_student.keys())[0]} a la meilleure moyenne: {list(best_student.values())[0]}")
+    print(f"{list(best_student.keys())[0]} a la meilleure moyenne: {list(best_student.values())[0]}")"""
 
     sentence = "bonjour, je suis une phrase. je suis compose de beaucoup de lettre. oui oui"
     frequence(sentence)
 
-    print("On enregistre les recettes...")
+    """print("On enregistre les recettes...")
     recipes = get_recipes()
 
     print("On affiche une recette au choix...")
-    print_recipe(recipes)
+    print_recipe(recipes)"""
 
 
 if __name__ == '__main__':

@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from typing import List
 
-"""
+
 def order(values: list = None) -> list:
     if values is None:
         # TODO: demander les valeurs ici
@@ -14,7 +15,6 @@ def order(values: list = None) -> list:
         pass
 
     return [liste1]
-"""
 
 
 def anagrams(words: list = None) -> bool:
@@ -45,59 +45,106 @@ def anagrams(words: list = None) -> bool:
 
 
 def contains_doubles(items: list) -> bool:
-    
+    for i in range(len(items)):
+        a = items[i]
+        b = items.count(a)
+        if b > 1:
+            return True
     return False
 
 
 def best_grades(student_grades: dict) -> dict:
     # TODO: Retourner un dictionnaire contenant le nom de l'étudiant ayant la meilleure moyenne ainsi que sa moyenne
-    return {}
+    best = dict()
+    for i in student_grades:
+        c = 0
+        d = 0
+        a = student_grades[i]
+        for q in range(len(a)):
+            c += a[q]
+        c = c / len(a)
+        if len(best) == 0 or list(best.values())[0] < c:
+            best = {i: c}
+
+    return best
 
 
 def frequence(sentence: str) -> dict:
     # TODO: Afficher les lettres les plus fréquentes
     #       Retourner le tableau de lettres
+    dictionnaire = dict()
 
-    return {}
+    for lettre in range(len(sentence)):
+        count = sentence.count(sentence[lettre])
+        dictionnaire[sentence[lettre]] = count
+    sorted_dic = sorted(dictionnaire.items(), key=lambda item: item[1], reverse=True) ## le reverce = True nous donne donne un ordre decroissant
+    for item in sorted_dic:
+        if item[1] > 5:
+            print("le caractere ", item[0], " revient ", item[1], " fois.")
+    return sorted_dic
 
 
 def get_recipes():
     # TODO: Demander le nom d'une recette, puis ses ingredients et enregistrer dans une structure de données
-    pass
+    nom = ""
+    nombre = 0
+    indice = "O"
+    dictionnaire = {}
+    dic_ingredients = {}
+    while indice == "O":
+        nom = input("Veuillez entre le nom de la recette ")
+        nombre = int(input(" La recette est composé de combien d'ingredient ?"))
+        for i in range(nombre):
+            print(" Veuillez entrer le nom de la ", i + 1, "em ingredient")
+            ingredient = input()
+            print(" Veuillez entrer la qantité en gramme ")
+            quantite = input()
+            dic_ingredients[ingredient] = quantite
+        dictionnaire[nom] = dic_ingredients
+        indice = input(" Voulez vous ajouter une autre recette? O/N ")
+        indice = indice.upper()
+    return dictionnaire
+
 
 
 def print_recipe(ingredients) -> None:
     # TODO: Demander le nom d'une recette, puis l'afficher si elle existe
+    nom = input("Veuillez entrer le nom de la recette ")
+    while nom not in ingredients:
+        nom = input(" Le nom de la recette n'est pas dans la liste, veuillez entrer un nom valide. ")
+    print(ingredients[nom])
     pass
 
 
 def main() -> None:
-    """""
+    """
     print(f"On essaie d'ordonner les valeurs...")
     order()
-   
+
     print(f"On vérifie les anagrammes...")
     if anagrams():
         print('oui')
     else:
         print("non")
- """""
+
 
     my_list = [3, 3, 5, 6, 1, 1]
     print(f"Ma liste contient-elle des doublons? {contains_doubles(my_list)}")
-    """
+
+
     grades = {"Bob": [90, 65, 20], "Alice": [85, 75, 83]}
     best_student = best_grades(grades)
     print(f"{list(best_student.keys())[0]} a la meilleure moyenne: {list(best_student.values())[0]}")
 
     sentence = "bonjour, je suis une phrase. je suis compose de beaucoup de lettre. oui oui"
-    frequence(sentence)
+    frequence(sentence)"""
+
 
     print("On enregistre les recettes...")
     recipes = get_recipes()
 
     print("On affiche une recette au choix...")
-    print_recipe(recipes)"""
+    print_recipe(recipes)
 
 
 if __name__ == '__main__':
